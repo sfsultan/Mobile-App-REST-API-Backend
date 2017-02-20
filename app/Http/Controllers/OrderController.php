@@ -34,11 +34,15 @@ class OrderController extends Controller{
         return response()->json('Removed successfully.');
     }
 
-    public function index(){
+    public function index() {
 
         $orders  = Order::all();
+        return response()->json($orders)->header('Content-Type', 'application/json');
+    }
 
-        return response()->json($orders);
+    public function view($tracking) {
 
+        $order  = Order::where('tracking_id', $tracking)->get();
+        return response()->json($order)->header('Content-Type', 'application/json');
     }
 }

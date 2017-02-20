@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,6 +11,24 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
+// $app->get('/', function () use ($app) {
+//     return $app->version();
+// });
+
+
+// $app->get('/order', function () use ($app)  {
+//     return $app->version();
+// });
+
+// $app->get('/order', 'OrderController@index');
+
+$app->group(['prefix' => 'v1'], function($app) {
+    // $app->post('order','OrderController@createCar');
+
+    // $app->put('car/{id}','OrderController@updateCar');
+
+    // $app->delete('car/{id}','OrderController@deleteCar');
+
+    $app->get('order','OrderController@index');
+    $app->get('order/{tracking}','OrderController@view');
 });
