@@ -40,6 +40,10 @@ class OrderController extends Controller{
         return response()->json($orders)->header('Content-Type', 'application/json');
     }
 
+    public function save() {
+        return "SaveOrder";
+    }
+
     public function view($tracking) {
 
         $order  = Order::where('tracking_id', $tracking)->get();
