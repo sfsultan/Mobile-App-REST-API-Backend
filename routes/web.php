@@ -30,6 +30,6 @@ $app->group(['prefix' => 'api/v1'], function($app) {
     // $app->delete('car/{id}','OrderController@deleteCar');
 
     $app->get('order','OrderController@index');
-    $app->get('order/save','OrderController@save');
+    $app->post('order/save','OrderController@save');
     $app->get('order/{tracking}','OrderController@view');
 });

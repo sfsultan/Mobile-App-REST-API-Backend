@@ -40,8 +40,14 @@ class OrderController extends Controller{
         return response()->json($orders)->header('Content-Type', 'application/json');
     }
 
-    public function save() {
-        return "SaveOrder";
+    public function save(Request $request) {
+        // return "asdsad";
+        return response()->json($request->all())
+                        ->header('Content-Type', 'application/json')
+                        ->header('Access-Control-Allow-Credentials', 'true')
+                        ->header('Access-Control-Max-Age', '86400')
+                        ->header('Access-Control-Allow-Origin', '*') // REMOVE THIS AT PRODUCTION
+                        ->header('Access-Control-Allow-Methods', 'POST');
     }
 
     public function view($tracking) {
