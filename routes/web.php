@@ -22,13 +22,19 @@ use App\Http\Controllers\OrderController;
 
 // $app->get('/order', 'OrderController@index');
 
-$app->group(['prefix' => 'v1'], function($app) {
+$app->group(['prefix' => 'api/v1'], function($app) {
     // $app->post('order','OrderController@createCar');
 
     // $app->put('car/{id}','OrderController@updateCar');
 
     // $app->delete('car/{id}','OrderController@deleteCar');
 
+	//	PRODUCT DATA FETCH
+	$app->group(['prefix'=>'product'], function($app) {
+		$app->get('', 'ProductController@index');
+	});
+
+    $app->get('order/save','OrderController@save');
     $app->get('order','OrderController@index');
     $app->get('order/{tracking}','OrderController@view');
 });

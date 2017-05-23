@@ -40,6 +40,14 @@ class OrderController extends Controller{
         return response()->json($orders)->header('Content-Type', 'application/json');
     }
 
+    public function save() {
+
+        $target_path = "uploads/";
+        $target_path = $target_path . basename( $_FILES['file']['name']);
+
+        return $target_path;
+    }
+
     public function view($tracking) {
 
         $order  = Order::where('tracking_id', $tracking)->get();
