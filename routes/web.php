@@ -28,6 +28,7 @@ $app->group(['prefix' => 'api/v1'], function($app) {
     // $app->put('car/{id}','OrderController@updateCar');
 
     // $app->delete('car/{id}','OrderController@deleteCar');
+    $app->get('product/{limit}/{skip}','ProductController@index');
 
     $app->get('order','OrderController@index');
     $app->post('order/save','OrderController@save');
