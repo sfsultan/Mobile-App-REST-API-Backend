@@ -28,6 +28,7 @@ $app->group(['prefix' => 'api/v1'], function($app) {
     // $app->put('car/{id}','OrderController@updateCar');
 
     // $app->delete('car/{id}','OrderController@deleteCar');
+    $app->get('product','ProductController@index');
 
 	//	PRODUCT DATA FETCH
 	$app->group(['prefix'=>'product'], function($app) {
@@ -36,5 +37,6 @@ $app->group(['prefix' => 'api/v1'], function($app) {
 
     $app->get('order/save','OrderController@save');
     $app->get('order','OrderController@index');
+    $app->post('order/save','OrderController@save');
     $app->get('order/{tracking}','OrderController@view');
 });

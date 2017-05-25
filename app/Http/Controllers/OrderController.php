@@ -8,31 +8,25 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller{
 
-    public function createCar(Request $request){
+    // public function createCar(Request $request){
 
-        $car = Car::create($request->all());
+    //     $car = Car::create($request->all());
 
-        return response()->json($car);
+    //     return response()->json($car);
 
-    }
+    // }
 
-    public function updateCar(Request $request, $id){
+    // public function updateCar(Request $request, $id){
 
-        $car  = Car::find($id);
-        $car->make = $request->input('make');
-        $car->model = $request->input('model');
-        $car->year = $request->input('year');
-        $car->save();
+    //     $car  = Car::find($id);
+    //     $car->make = $request->input('make');
+    //     $car->model = $request->input('model');
+    //     $car->year = $request->input('year');
+    //     $car->save();
 
-        return response()->json($car);
-    }
+    //     return response()->json($car);
+    // }
 
-    public function deleteCar($id){
-        $car  = Car::find($id);
-        $car->delete();
-
-        return response()->json('Removed successfully.');
-    }
 
     public function index() {
 
@@ -40,12 +34,22 @@ class OrderController extends Controller{
         return response()->json($orders)->header('Content-Type', 'application/json');
     }
 
-    public function save() {
 
-        $target_path = "uploads/";
-        $target_path = $target_path . basename( $_FILES['file']['name']);
 
-        return $target_path;
+    public function save(Request $request) {
+
+        // $target_path = "uploads/";
+        // $target_path = $target_path . basename( $_FILES['file']['name']);
+
+        // return $target_path;
+
+        // return "asdsad";
+        return response()->json($request->all())
+                        ->header('Content-Type', 'application/json')
+                        ->header('Access-Control-Allow-Credentials', 'true')
+                        ->header('Access-Control-Max-Age', '86400')
+                        ->header('Access-Control-Allow-Origin', '*') // REMOVE THIS AT PRODUCTION
+                        ->header('Access-Control-Allow-Methods', 'POST');
     }
 
     public function view($tracking) {
