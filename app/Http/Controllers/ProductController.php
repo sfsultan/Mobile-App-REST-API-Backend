@@ -12,6 +12,7 @@ class ProductController extends Controller{
 
     public function index(Request $request) {
 
+
         if ($request->has('limit') && $request->limit <= 10) {
             $limit = $request->limit;
         } else {
@@ -24,7 +25,16 @@ class ProductController extends Controller{
             $skip = 0;
         }
 
-        $products = Product::skip($skip)->take($limit)->get();
+        if ($request->has('q') && $request->q != '') {
+            $q = strtolower($request->q);
+            $skip = 0;
+            $limit = 100;
+            $products = Product::where('title', 'LIKE',  "%$q%")->skip($skip)->limit($limit)->get();
+        } else {
+            $products = Product::skip($skip)->limit($limit)->get();
+        }
+
+
         return response()->json($products)
                         ->header('Content-Type', 'application/json')
                         ->header('Access-Control-Allow-Credentials', 'true')
