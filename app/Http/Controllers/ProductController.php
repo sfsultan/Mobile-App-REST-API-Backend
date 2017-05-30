@@ -34,6 +34,10 @@ class ProductController extends Controller{
             $products = Product::skip($skip)->limit($limit)->get();
         }
 
+        if ($request->has('id')) {
+            $products = Product::find($request->id);
+        }
+
 
         return response()->json($products)
                         ->header('Content-Type', 'application/json')
