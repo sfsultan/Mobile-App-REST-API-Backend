@@ -28,11 +28,15 @@ $app->group(['prefix' => 'api/v1'], function($app) {
     // $app->put('car/{id}','OrderController@updateCar');
 
     // $app->delete('car/{id}','OrderController@deleteCar');
-    $app->get('product','ProductController@index');
+    // $app->get('product','ProductController@index');
+    // $app->post('product/postCartItem','ProductController@postCartItem');
+    // $app->post('product/test','ProductController@test');
 
 	//	PRODUCT DATA FETCH
 	$app->group(['prefix'=>'product'], function($app) {
 		$app->get('', 'ProductController@index');
+		$app->post('postCartItem', 'ProductController@postCartItem');
+		$app->get('test', 'ProductController@test');
 	});
 
     $app->get('order/save','OrderController@save');
